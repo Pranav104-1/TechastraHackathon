@@ -3,6 +3,7 @@ import CareerCard from "@/components/career-card";
 export default function Home() {
   const careers = [
     {
+      id: "software-engineer",
       title: "Software Engineer",
       division: "Stark Industries / AI Division",
       description: "Developing advanced autonomous systems and neural interfaces. Inspired by Tony Stark's engineering genius, you'll build the next generation of JARVIS-level intelligence.",
@@ -17,6 +18,7 @@ export default function Home() {
       )
     },
     {
+      id: "chief-surgeon",
       title: "Chief Surgeon",
       division: "Medical / Bio-Science Wing",
       description: "Mastering the arts of life-saving medicine and experimental bio-tech. Like Stephen Strange, your precision and dedication will push the boundaries of human recovery.",
@@ -30,6 +32,7 @@ export default function Home() {
       )
     },
     {
+      id: "lead-illustrator",
       title: "Lead Illustrator",
       division: "Creative Arts / Archives",
       description: "Capturing the history and essence of heroism through visual storytelling. Following Steve Rogers' artistic roots, you'll document the legacy of the Avengers Initiative.",
@@ -46,6 +49,7 @@ export default function Home() {
       )
     },
     {
+      id: "ui-ux-designer",
       title: "UI/UX Designer",
       division: "Stark Tech / Visual Systems",
       description: "Crafting intuitive holographic interfaces for tactical HUDs. Channelling Janet van Dyne's eye for design, you'll make high-tech complexity feel seamless and beautiful.",
@@ -61,6 +65,7 @@ export default function Home() {
       )
     },
     {
+      id: "bio-geneticist",
       title: "Bio-Geneticist",
       division: "Gamma Radiation Research",
       description: "Investigating the fundamental building blocks of cellular mutation. Like Bruce Banner, your research will unlock the secrets of superhuman biology and regenerative medicine.",
@@ -76,6 +81,7 @@ export default function Home() {
       )
     },
     {
+      id: "quantum-physicist",
       title: "Quantum Physicist",
       division: "Asgardian Liaison / Research",
       description: "Bridging the gap between human science and cosmic reality. Following Jane Foster's lead, you'll study the Einstein-Rosen bridges and multiversal anomalies.",

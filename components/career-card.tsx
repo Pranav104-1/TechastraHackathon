@@ -1,8 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import { Card, CardBody, CardFooter, Button, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@heroui/react";
+import Link from "next/link";
 
 interface CareerOptionProps {
+  id: string;
   title: string;
   division: string;
   description: string;
@@ -21,7 +23,7 @@ const colorMap: Record<string, { border: string; bg: string; text: string; shado
   yellow: { border: "border-yellow-400", bg: "bg-yellow-400", text: "text-yellow-400", shadow: "shadow-yellow-400/50" },
 };
 
-export default function CareerCard({ title, division, description, icon, clearance, color = "blue", skills = [] }: CareerOptionProps) {
+export default function CareerCard({ id, title, division, description, icon, clearance, color = "blue", skills = [] }: CareerOptionProps) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const theme = colorMap[color] || colorMap.blue;
 
@@ -166,6 +168,8 @@ export default function CareerCard({ title, division, description, icon, clearan
                     Abort
                   </Button>
                   <Button
+                    as={Link}
+                    href={`/careers/${id}`}
                     className={`${theme.bg} hover:opacity-80 text-black font-black uppercase text-[10px] tracking-widest rounded-sm px-10 relative overflow-hidden group`}
                   >
                     <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500" />

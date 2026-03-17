@@ -51,17 +51,23 @@ export default function NavBar() {
 
           {/* Navigation - Centered links */}
           <NavbarItem className="hidden md:flex items-center gap-1">
-            {['Home', 'Quiz', 'About', 'Chatbot','Advice'].map((item, idx) => (
+            {[
+              { name: 'Home', href: '/' },
+              { name: 'Quiz', href: '#' },
+              { name: 'Comm Link', href: '/community' },
+              { name: 'Chatbot', href: '#' },
+              { name: 'Advice', href: '#' }
+            ].map((item, idx) => (
               <Link
-                key={item}
-                href="#"
+                key={item.name}
+                href={item.href}
                 className={`px-4 py-1 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 rounded-md
-                  ${idx === 1
+                  ${item.name === 'Comm Link'
                     ? 'text-blue-400 bg-blue-500/10 shadow-[inset_0_0_10px_rgba(0,210,255,0.2)] border border-blue-500/20'
                     : 'text-white/50 hover:text-white hover:bg-white/5'}
                 `}
               >
-                {item}
+                {item.name}
               </Link>
             ))}
           </NavbarItem>

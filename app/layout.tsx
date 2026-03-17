@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Providers } from "./providers";
 import NavBar from "@/components/navbar";
 import Chatbot from "@/components/chatbot";
+import MarvelBackground from "@/components/marvel-background";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,6 +40,7 @@ export default function RootLayout({
         >
           <Providers>
             <div className="relative min-h-screen bg-transparent">
+              <MarvelBackground />
               <NavBar />
               <main className="relative z-10">
                 {children}
