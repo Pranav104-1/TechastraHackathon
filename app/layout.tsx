@@ -38,7 +38,7 @@ export default function RootLayout({
           }}
         >
           <Providers>
-            <div className="relative min-h-screen bg-[#000205]">
+            <div className="relative min-h-screen bg-transparent">
               <NavBar />
               <main className="relative z-10">
                 {children}

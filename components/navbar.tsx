@@ -34,8 +34,8 @@ export default function NavBar() {
   return (
     <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
       <Navbar
-        maxWidth="xl"
-        className="h-14 bg-black/60 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_30px_rgba(0,210,255,0.15)] overflow-visible"
+        
+        className="h-14 w-max bg-black/60 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_30px_rgba(0,210,255,0.15)] overflow-visible"
       >
         <NavbarContent className="flex gap-8 w-full text-center items-center justify-center" justify="center">
           {/* Brand - Integrated into center flow */}
@@ -51,7 +51,7 @@ export default function NavBar() {
 
           {/* Navigation - Centered links */}
           <NavbarItem className="hidden md:flex items-center gap-1">
-            {['Terminal', 'Missions', 'Database', 'Intel'].map((item, idx) => (
+            {['Home', 'Quiz', 'About', 'Chatbot','Advice'].map((item, idx) => (
               <Link
                 key={item}
                 href="#"

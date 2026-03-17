@@ -1,14 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #00040a;
-  /* Ultra-deep space blue */
+  --background: #050507;
   --foreground: #ffffff;
-  --accent-blue: #00d2ff;
+  --accent-blue: #1d4ed8;
   --accent-gold: #ffd700;
   --accent-green: #00ff00;
   --accent-purple: #a855f7;
-  --accent-red: #ff3c3c;
+  --accent-red: #b91c1c;
 }
 
 @theme inline {
@@ -21,7 +20,10 @@
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(circle at 18% 15%, rgba(185, 28, 28, 0.38), transparent 42%),
+    radial-gradient(circle at 82% 20%, rgba(29, 78, 216, 0.34), transparent 48%),
+    linear-gradient(140deg, #030304 0%, #090b13 55%, #030306 100%);
   color: var(--foreground);
   font-family: var(--font-mono);
   overflow-x: hidden;
@@ -36,18 +38,18 @@ body {
   mask-image: radial-gradient(circle at center, black, transparent 80%);
 }
 
-/* Marvel Multi-Color Gradients */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   background:
-    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
-    linear-gradient(90deg, rgba(255, 0, 0, 0.1), rgba(255, 165, 0, 0.1), rgba(0, 255, 0, 0.1), rgba(0, 0, 255, 0.1), rgba(128, 0, 128, 0.1));
-  background-size: 100% 4px, 100% 100%;
+    linear-gradient(rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.2) 50%),
+    linear-gradient(120deg, rgba(185, 28, 28, 0.16), rgba(0, 0, 0, 0) 45%),
+    linear-gradient(300deg, rgba(29, 78, 216, 0.16), rgba(0, 0, 0, 0) 45%);
+  background-size: 100% 3px, 100% 100%, 100% 100%;
   pointer-events: none;
   z-index: 100;
-  opacity: 0.3;
+  opacity: 0.55;
 }
 
 /* Tech Corner Decorative Borders */
