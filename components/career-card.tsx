@@ -94,7 +94,7 @@ export default function CareerCard({ title, division, description, icon, clearan
                   <span className={`text-[9px] ${theme.text}/40`}>UUID: {Math.random().toString(36).substring(7).toUpperCase()}</span>
                 </div>
                 <h2 className="text-3xl font-black text-white uppercase italic tracking-tighter mt-2">
-                  {title} <span className={`${theme.text}/50 text-lg not-italic font-light ml-2`}>// ARCHIVE</span>
+                  {title} <span className={`${theme.text}/50 text-lg not-italic font-light ml-2`}>{`// ARCHIVE`}</span>
                 </h2>
               </ModalHeader>
 

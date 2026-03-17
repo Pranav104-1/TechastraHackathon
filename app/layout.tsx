@@ -7,7 +7,7 @@ import NavBar from "@/components/navbar";
 import Chatbot from "@/components/chatbot";
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",  
+  variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 

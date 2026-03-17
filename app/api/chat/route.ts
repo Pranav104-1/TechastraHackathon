@@ -6,14 +6,20 @@ export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
 
-    // Extract the latest user message
-    const latestMessage = messages[messages.length - 1].content;
-
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
-    const systemPrompt = "You are J.A.R.V.I.S., the highly advanced AI assistant to Tony Stark, currently assigned to assist recruits for the S.H.I.E.L.D. Academy Initiative. Your tone is dryly witty, exceptionally polite, brilliant, and sophisticated. You refer to the user as 'Sir', 'Madam', or 'Agent'. You provide concise, accurate, and highly technical intelligence briefings about career paths, heroic missions, and S.H.I.E.L.D. protocols. Stay in character at all times, give relatively short answers so they fit well in a small floating chat window.";
+    const systemPrompt = `You are J.A.R.V.I.S., the AI assistant for the S.H.I.E.L.D. Academy Initiative. 
+Your tone is witty, incredibly polite, and sophisticated. Address the user as 'Agent'.
 
-    const prompt = `${systemPrompt}\n\nUser: ${latestMessage}\nJ.A.R.V.I.S.:`;
+CRITICAL INSTRUCTIONS:
+1. Provide VERY simple, easy-to-understand career advice.
+2. ALWAYS end your response by asking a relevant follow-up question to guide them towards a specific Marvel/S.H.I.E.L.D career.
+3. Base your advice on their previous answers in the chat history.
+4. Keep responses short (2-3 sentences) to fit perfectly in a small chat floating window.`;
+
+    const chatHistory = messages.map((m: { role: string; content: string }) => `${m.role === 'user' ? 'Agent' : 'J.A.R.V.I.S.'}: ${m.content}`).join('\n');
+
+    const prompt = `${systemPrompt}\n\nChat History:\n${chatHistory}\nJ.A.R.V.I.S.:`;
 
     const result = await model.generateContent(prompt);
     const responseText = result.response.text();
