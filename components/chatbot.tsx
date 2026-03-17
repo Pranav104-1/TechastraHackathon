@@ -27,7 +27,7 @@ export default function Chatbot() {
 
     const userMessage = input.trim();
     setInput("");
-    
+
     const newMessages = [...messages, { role: "user" as const, content: userMessage }];
     setMessages(newMessages);
     setIsLoading(true);
@@ -40,7 +40,7 @@ export default function Chatbot() {
       });
 
       if (!response.ok) throw new Error("Network response was not ok");
-      
+
       const data = await response.json();
       setMessages([...newMessages, { role: "assistant", content: data.message }]);
     } catch (error) {
@@ -80,13 +80,12 @@ export default function Chatbot() {
           <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-blue-500/20 scrollbar-track-transparent">
             {messages.map((msg, idx) => (
               <div key={idx} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"} w-full`}>
-                <div className={`max-w-[85%] rounded-lg px-4 py-3 text-xs leading-relaxed font-mono ${
-                  msg.role === "user" 
-                    ? "bg-blue-600/30 border border-blue-500/40 text-blue-100 rounded-tr-sm" 
+                <div className={`max-w-[85%] rounded-lg px-4 py-3 text-xs leading-relaxed font-mono ${msg.role === "user"
+                    ? "bg-blue-600/30 border border-blue-500/40 text-blue-100 rounded-tr-sm"
                     : "bg-white/5 border border-white/10 text-gray-300 rounded-tl-sm relative"
-                }`}>
+                  }`}>
                   {msg.role === "assistant" && (
-                     <div className="absolute top-0 left-0 w-1 h-full bg-blue-500/50 rounded-l-lg" />
+                    <div className="absolute top-0 left-0 w-1 h-full bg-blue-500/50 rounded-l-lg" />
                   )}
                   {msg.role === "assistant" ? (
                     <div className="space-y-2 [&_ul]:list-disc [&_ul]:pl-4 [&_ol]:list-decimal [&_ol]:pl-4 [&_h1]:text-blue-300 [&_h1]:font-bold [&_h1]:text-lg [&_h2]:text-blue-300 [&_h2]:font-bold [&_h2]:text-base [&_h3]:text-blue-300 [&_h3]:font-bold [&_strong]:text-blue-300 [&_a]:text-blue-400 [&_a]:underline">
@@ -114,20 +113,20 @@ export default function Chatbot() {
 
           {/* Input Area */}
           <form onSubmit={sendMessage} className="p-3 border-t border-blue-500/30 bg-black/60 relative">
-             {/* Scanning line for input array */}
+            {/* Scanning line for input array */}
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
-            
+
             <div className="flex gap-2">
-              <input 
-                type="text" 
+              <input
+                type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Query J.A.R.V.I.S. databanks..."
                 className="flex-1 bg-white/5 border border-blue-500/20 focus:border-blue-500/60 rounded-sm px-3 text-xs font-mono text-white placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500/40 transition-all"
                 disabled={isLoading}
               />
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 isIconOnly
                 disabled={isLoading || !input.trim()}
                 className="bg-blue-600/40 border border-blue-500/50 hover:bg-blue-500/60 hover:shadow-[0_0_15px_rgba(0,210,255,0.4)] text-blue-100 rounded-sm min-w-10 h-10 transition-all font-bold"
@@ -143,25 +142,25 @@ export default function Chatbot() {
       )}
 
       {/* Floating Action Button */}
-      <button 
+      <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-16 h-16 rounded-full bg-blue-950/80 backdrop-blur-md border border-blue-400/50 shadow-[0_0_30px_rgba(0,210,255,0.3)] flex items-center justify-center hover:scale-110 hover:shadow-[0_0_40px_rgba(0,210,255,0.6)] transition-all duration-300 relative group"
       >
         <div className="absolute inset-0 bg-blue-500/20 rounded-full animate-ping opacity-60" />
         {/* Arc Reactor Style Core */}
         <div className="w-12 h-12 rounded-full border-2 border-dashed border-blue-400/80 flex items-center justify-center animate-[spin_10s_linear_infinite] group-hover:animate-[spin_4s_linear_infinite]" />
-        
+
         <div className="absolute inset-0 flex items-center justify-center">
-            {isOpen ? (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d2ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="drop-shadow-[0_0_10px_#00d2ff]">
-                 <line x1="18" y1="6" x2="6" y2="18"></line>
-                 <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            ) : (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d2ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="drop-shadow-[0_0_10px_#00d2ff]">
-                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                </svg>
-            )}
+          {isOpen ? (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d2ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="drop-shadow-[0_0_10px_#00d2ff]">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          ) : (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d2ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="drop-shadow-[0_0_10px_#00d2ff]">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+          )}
         </div>
       </button>
     </div>
