@@ -81,18 +81,18 @@ export default function Chatbot() {
 
     // Try to find a good English male voice for Jarvis vibe
     const voices = window.speechSynthesis.getVoices();
-    const preferredVoice = 
-      voices.find(v => v.lang.startsWith("en") && (v.name.includes("UK English Male") || v.name.includes("Google UK English Male") || v.name.includes("Daniel") || v.name.includes("Male"))) 
-      || voices.find(v => v.lang.startsWith("en")) 
+    const preferredVoice =
+      voices.find(v => v.lang.startsWith("en") && (v.name.includes("UK English Male") || v.name.includes("Google UK English Male") || v.name.includes("Daniel") || v.name.includes("Male")))
+      || voices.find(v => v.lang.startsWith("en"))
       || null;
 
     if (preferredVoice) {
       utterance.voice = preferredVoice;
     }
-    
+
     utterance.pitch = 0.9; // Slightly deeper
     utterance.rate = 1.0;
-    
+
     utterance.onend = () => setIsPlaying(null);
     utterance.onerror = () => setIsPlaying(null);
 
@@ -129,28 +129,28 @@ export default function Chatbot() {
             {messages.map((msg, idx) => (
               <div key={idx} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"} w-full group relative`}>
                 <div className={`max-w-[85%] rounded-lg px-4 py-3 text-xs leading-relaxed font-mono ${msg.role === "user"
-                    ? "bg-blue-600/30 border border-blue-500/40 text-blue-100 rounded-tr-sm"
-                    : "bg-white/5 border border-white/10 text-gray-300 rounded-tl-sm relative"
+                  ? "bg-blue-600/30 border border-blue-500/40 text-blue-100 rounded-tr-sm"
+                  : "bg-white/5 border border-white/10 text-gray-300 rounded-tl-sm relative"
                   }`}>
-                  {msg.role === "assistant" && (                    <div className="absolute top-0 right-0 -mt-2 -mr-2 flex gap-1 bg-black/60 backdrop-blur-sm border border-blue-500/30 p-1 rounded-full shadow-[0_0_10px_rgba(0,0,0,0.5)] z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <button 
-                        onClick={() => playSpeech(msg.content, idx)}
-                        className="text-blue-400 hover:text-white transition p-1 cursor-pointer"
-                        title={isPlaying === idx ? "Stop Audio" : "Play Audio"}
-                      >
-                         {isPlaying === idx ? (
-                           <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none">
-                             <rect x="6" y="6" width="12" height="12"></rect>
-                           </svg>
-                         ) : (
-                           <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none">
-                             <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                           </svg>
-                         )}
-                      </button>
-                    </div>
+                  {msg.role === "assistant" && (<div className="absolute top-0 right-0 -mt-2 -mr-2 flex gap-1 bg-black/60 backdrop-blur-sm border border-blue-500/30 p-1 rounded-full shadow-[0_0_10px_rgba(0,0,0,0.5)] z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button
+                      onClick={() => playSpeech(msg.content, idx)}
+                      className="text-blue-400 hover:text-white transition p-1 cursor-pointer"
+                      title={isPlaying === idx ? "Stop Audio" : "Play Audio"}
+                    >
+                      {isPlaying === idx ? (
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                          <rect x="6" y="6" width="12" height="12"></rect>
+                        </svg>
+                      ) : (
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                      )}
+                    </button>
+                  </div>
                   )}
-                  {msg.role === "assistant" && (                    <div className="absolute top-0 left-0 w-1 h-full bg-blue-500/50 rounded-l-lg" />
+                  {msg.role === "assistant" && (<div className="absolute top-0 left-0 w-1 h-full bg-blue-500/50 rounded-l-lg" />
                   )}
                   {msg.role === "assistant" ? (
                     <div className="space-y-2 [&_ul]:list-disc [&_ul]:pl-4 [&_ol]:list-decimal [&_ol]:pl-4 [&_h1]:text-blue-300 [&_h1]:font-bold [&_h1]:text-lg [&_h2]:text-blue-300 [&_h2]:font-bold [&_h2]:text-base [&_h3]:text-blue-300 [&_h3]:font-bold [&_strong]:text-blue-300 [&_a]:text-blue-400 [&_a]:underline">
