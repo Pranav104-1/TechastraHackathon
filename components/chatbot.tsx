@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@heroui/react";
+import ReactMarkdown from "react-markdown";
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -87,7 +88,15 @@ export default function Chatbot() {
                   {msg.role === "assistant" && (
                      <div className="absolute top-0 left-0 w-1 h-full bg-blue-500/50 rounded-l-lg" />
                   )}
-                  {msg.content}
+                  {msg.role === "assistant" ? (
+                    <div className="space-y-2 [&_ul]:list-disc [&_ul]:pl-4 [&_ol]:list-decimal [&_ol]:pl-4 [&_h1]:text-blue-300 [&_h1]:font-bold [&_h1]:text-lg [&_h2]:text-blue-300 [&_h2]:font-bold [&_h2]:text-base [&_h3]:text-blue-300 [&_h3]:font-bold [&_strong]:text-blue-300 [&_a]:text-blue-400 [&_a]:underline">
+                      <ReactMarkdown>
+                        {msg.content}
+                      </ReactMarkdown>
+                    </div>
+                  ) : (
+                    msg.content
+                  )}
                 </div>
               </div>
             ))}
