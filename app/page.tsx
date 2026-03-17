@@ -1,3 +1,4 @@
+import AIChatbot from "@/components/aichatbot";
 import { SignInButton, UserAvatar } from "@clerk/nextjs";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
       <main>
         <SignInButton />
         <UserAvatar />
+        <AIChatbot/>
       </main>
     </div>
   );
