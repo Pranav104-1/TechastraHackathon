@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #00040a; /* Ultra-deep space blue */
+  --background: #00040a;
+  /* Ultra-deep space blue */
   --foreground: #ffffff;
   --accent-blue: #00d2ff;
   --accent-gold: #ffd700;
@@ -26,27 +27,27 @@ body {
   overflow-x: hidden;
 }
 
-/* Sci-Fi HUD Overlay */
+/* High-Tech Grid with Perspective */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+}
+
+/* Marvel Multi-Color Gradients */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background: 
+  background:
     linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
-    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-  background-size: 100% 4px, 3px 100%;
+    linear-gradient(90deg, rgba(255, 0, 0, 0.1), rgba(255, 165, 0, 0.1), rgba(0, 255, 0, 0.1), rgba(0, 0, 255, 0.1), rgba(128, 0, 128, 0.1));
+  background-size: 100% 4px, 100% 100%;
   pointer-events: none;
   z-index: 100;
-  opacity: 0.15;
-}
-
-/* High-Tech Grid with Perspective */
-.bg-grid {
-  background-image: 
-    linear-gradient(var(--accent-blue) 1px, transparent 1px),
-    linear-gradient(90deg, var(--accent-blue) 1px, transparent 1px);
-  background-size: 50px 50px;
-  mask-image: radial-gradient(circle at center, black, transparent 80%);
+  opacity: 0.3;
 }
 
 /* Tech Corner Decorative Borders */
@@ -55,7 +56,8 @@ body::after {
   border: 1px solid rgba(0, 210, 255, 0.3);
 }
 
-.tech-border::before, .tech-border::after {
+.tech-border::before,
+.tech-border::after {
   content: "";
   position: absolute;
   width: 8px;
@@ -64,12 +66,26 @@ body::after {
   border-style: solid;
 }
 
-.tech-border::before { top: -2px; left: -2px; border-width: 2px 0 0 2px; }
-.tech-border::after { bottom: -2px; right: -2px; border-width: 0 2px 2px 0; }
+.tech-border::before {
+  top: -2px;
+  left: -2px;
+  border-width: 2px 0 0 2px;
+}
+
+.tech-border::after {
+  bottom: -2px;
+  right: -2px;
+  border-width: 0 2px 2px 0;
+}
 
 @keyframes scan {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
 }
 
 .scanning-line {

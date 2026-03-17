@@ -1,48 +1,26 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-interface ChatRequest {
-  message: string;
-}
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
-interface ChatResponse {
-  reply: string;
-  error?: string;
-}
-
-export async function POST(req: Request): Promise<Response> {
+export async function POST(req: Request) {
   try {
-    const { message }: ChatRequest = await req.json();
+    const { messages } = await req.json();
 
-    if (!message) {
-      return Response.json({ error: 'Message is required' }, { status: 400 });
-    }
+    // Extract the latest user message
+    const latestMessage = messages[messages.length - 1].content;
 
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) {
-      return Response.json({ error: 'API key not configured' }, { status: 500 });
-    }
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
-    const genAI = new GoogleGenerativeAI(apiKey);
+    const systemPrompt = "You are J.A.R.V.I.S., the highly advanced AI assistant to Tony Stark, currently assigned to assist recruits for the S.H.I.E.L.D. Academy Initiative. Your tone is dryly witty, exceptionally polite, brilliant, and sophisticated. You refer to the user as 'Sir', 'Madam', or 'Agent'. You provide concise, accurate, and highly technical intelligence briefings about career paths, heroic missions, and S.H.I.E.L.D. protocols. Stay in character at all times, give relatively short answers so they fit well in a small floating chat window.";
 
-    const model = genAI.getGenerativeModel({
-      model: 'gemini-2.5-flash',
-    });
-
-    const prompt = `
-System: You are a helpful assistant.
-
-User: ${message}
-`;
+    const prompt = `${systemPrompt}\n\nUser: ${latestMessage}\nJ.A.R.V.I.S.:`;
 
     const result = await model.generateContent(prompt);
-    const reply = result.response.text();
+    const responseText = result.response.text();
 
-    return Response.json({ reply });
+    return Response.json({ message: responseText });
   } catch (error) {
-    console.error('Error in chat API:', error);
-    return Response.json(
-      { error: 'Something went wrong', reply: '' },
-      { status: 500 }
-    );
+    console.error("Chat API error:", error);
+    return Response.json({ message: "I seem to be experiencing a connectivity issue with the primary servers, Agent. Please check the network uplink and try again." }, { status: 500 });
   }
 }

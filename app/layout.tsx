@@ -4,9 +4,10 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Providers } from "./providers";
 import NavBar from "@/components/navbar";
+import Chatbot from "@/components/chatbot";
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
+  variable: "--font-geist-sans",  
   subsets: ["latin"],
 });
 
@@ -42,6 +43,7 @@ export default function RootLayout({
               <main className="relative z-10">
                 {children}
               </main>
+              <Chatbot />
               {/* Avengers Theme Overlay */}
               <div className="fixed inset-0 bg-grid -z-10 pointer-events-none opacity-20" />
             </div>
