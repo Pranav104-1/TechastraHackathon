@@ -1,26 +1,86 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #00040a; /* Ultra-deep space blue */
+  --foreground: #ffffff;
+  --accent-blue: #00d2ff;
+  --accent-gold: #ffd700;
+  --accent-green: #00ff00;
+  --accent-purple: #a855f7;
+  --accent-red: #ff3c3c;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-red: var(--accent-red);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-mono);
+  overflow-x: hidden;
+}
+
+/* Sci-Fi HUD Overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: 
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 4px, 3px 100%;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.15;
+}
+
+/* High-Tech Grid with Perspective */
+.bg-grid {
+  background-image: 
+    linear-gradient(var(--accent-blue) 1px, transparent 1px),
+    linear-gradient(90deg, var(--accent-blue) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+}
+
+/* Tech Corner Decorative Borders */
+.tech-border {
+  position: relative;
+  border: 1px solid rgba(0, 210, 255, 0.3);
+}
+
+.tech-border::before, .tech-border::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: var(--accent-blue);
+  border-style: solid;
+}
+
+.tech-border::before { top: -2px; left: -2px; border-width: 2px 0 0 2px; }
+.tech-border::after { bottom: -2px; right: -2px; border-width: 0 2px 2px 0; }
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.scanning-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to bottom, transparent, var(--accent-blue), transparent);
+  opacity: 0.2;
+  animation: scan 10s linear infinite;
+  z-index: 99;
+  pointer-events: none;
 }
