@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@heroui/react";
 import CareerChatbot from "@/components/career-chatbot";
+import CareerQuiz from "@/components/career-quiz";
 
 // Mock Database of Career Data (Ideally would be moved into a separate data file/JSON)
 const careersData: Record<string, any> = {
@@ -196,6 +197,15 @@ export default function CareerPage(props: { params: Promise<{ id: string }> }) {
                                     </li>
                                 ))}
                             </ul>
+                        </section>
+
+                        {/* Interactive Career Quiz */}
+                        <section className="relative mt-8">
+                            <h2 className={`text-sm ${theme.text} uppercase tracking-widest font-black mb-6 flex items-center gap-3`}>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><line x1="12" y1="17" x2="12.01" y2="17" /></svg>
+                                Clearance Assessment Required
+                            </h2>
+                            <CareerQuiz careerId={params.id} theme={theme} />
                         </section>
                     </div>
 

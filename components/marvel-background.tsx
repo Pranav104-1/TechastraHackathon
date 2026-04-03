@@ -13,6 +13,7 @@ export default function MarvelBackground() {
             duration: `${4 + Math.random() * 6}s`,
             size: `${2 + Math.random() * 5}px`,
         }));
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setSparks(generatedSparks);
     }, []);
 

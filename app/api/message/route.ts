@@ -14,8 +14,8 @@ export async function POST(req: Request) {
   try {
     const messageData = await req.json();
 
-    // Broadcast the message to all clients in the 'community-hub' channel
-    await pusher.trigger("community-hub", "new-message", {
+    // Broadcast the message to all clients in the 'chi' channel
+    await pusher.trigger("shi", "new-message", {
       ...messageData,
       id: messageData.id || Date.now().toString(),
     });
