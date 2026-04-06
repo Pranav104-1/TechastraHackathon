@@ -34,7 +34,7 @@ export default function NavBar() {
   return (
     <div className="fixed top-2 sm:top-6 left-0 right-0 z-50 flex justify-center px-2 sm:px-4">
       <Navbar
-        
+
         className="h-12 sm:h-14 w-full sm:w-max max-w-full bg-black/60 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_30px_rgba(0,210,255,0.15)] overflow-visible"
       >
         <NavbarContent className="flex gap-2 sm:gap-4 md:gap-8 w-full text-center items-center justify-between sm:justify-center px-1 sm:px-0" justify="center">
@@ -90,20 +90,20 @@ export default function NavBar() {
                   </button>
                 </SignInButton>
                 <SignUpButton mode="modal">
-                  <Button 
-                    size="sm" 
+                  <Button
+                    size="sm"
                     className="h-8 sm:h-9 cursor-pointer bg-blue-500/10 backdrop-blur-md border border-blue-400/40 text-blue-400 font-black tracking-[0.2em] sm:tracking-[0.3em] text-[8px] sm:text-[10px] uppercase rounded-sm shadow-[0_0_20px_rgba(0,210,255,0.15)] px-2 sm:px-6 relative overflow-hidden group transition-all duration-500 hover:bg-blue-500 hover:text-black hover:shadow-[0_0_30px_rgba(0,210,255,0.8)] hover:scale-105 active:scale-95"
                   >
                     {/* Internal Tech Brackets */}
                     <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t-2 border-l-2 border-blue-400/60 group-hover:border-white transition-colors" />
                     <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b-2 border-r-2 border-blue-400/60 group-hover:border-white transition-colors" />
-                    
+
                     {/* High-Speed Scanline */}
                     <div className="absolute inset-x-0 h-[2px] bg-white/40 top-0 -translate-y-full group-hover:animate-[scan_1s_linear_infinite] opacity-0 group-hover:opacity-100" />
-                    
+
                     {/* Energy Pulse Background */}
                     <div className="absolute inset-0 bg-blue-400 opacity-0 group-hover:opacity-20 animate-pulse" />
-                    
+
                     <span className="relative z-10">Signin</span>
                   </Button>
                 </SignUpButton>
